@@ -6,7 +6,7 @@ from .models import Greeting
 
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello from Python!' % getenv("COMMIT_HASH"))
+    return HttpResponse('Hello from Python! ' % getenv("COMMIT_HASH", "Not COMMIT_HASH"))
 
 
 def db(request):
