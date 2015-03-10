@@ -4,17 +4,19 @@ from os import getenv
 
 from .models import Greeting
 
+
 # Create your views here.
 def index(request):
-    return HttpResponse('Hello from Python! ' % getenv("COMMIT_HASH", "Not COMMIT_HASH"))
+	commit_hash = getenv('COMMIT_HASH', 'Not COMMIT_HASH')
+	return HttpResponse('Hello from Python! ' % commit_hash)
 
 
 def db(request):
 
-    greeting = Greeting()
-    greeting.save()
+	greeting = Greeting()
+	greeting.save()
 
-    greetings = Greeting.objects.all()
+	greetings = Greeting.objects.all()
 
-    return render(request, 'db.html', {'greetings': greetings})
+	return render(request, 'db.html', {'greetings': greetings})
 
