@@ -8,7 +8,8 @@ from .models import Greeting
 # Create your views here.
 def index(request):
 	commit_hash = getenv('COMMIT_HASH', 'Not COMMIT_HASH')
-	return HttpResponse('Hello from Python! ' % commit_hash)
+	heroku_slug = getenv('HEROKU_SLUG', 'Not HEROKU_SLUG')
+	return HttpResponse('Hello from Python! {} {}'.format(commit_hash, heroku_slug))
 
 
 def db(request):
